@@ -1,0 +1,1 @@
+/* schema per rappresentare l'user */
