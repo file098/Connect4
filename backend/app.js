@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 const mongoose = require("./database/mongoose");
-const List = require("./database/moduls/list");
-const Task = require("./database/moduls/task");
-const { findById } = require("./database/moduls/list");
+const List = require("./database/modules/list");
+const Task = require("./database/modules/task");
+const { findById } = require("./database/modules/list");
 
 app.use(express.json());
 
@@ -44,7 +44,7 @@ app.delete("/lists/:listId", (req, res) => {
 });
 
 /* CRUD for tasks based on the list which they are part of */
-app.get("/lists/:listId/tasks", req, (res) => {
+app.get("/lists/:listId/tasks", (req, res) => {
     Task.findById({ _listId: res.params.listId })
         .then((lists) => res.send(lists))
         .catch((error) => console.log(error));
